@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const blogroute = require('./routes/blogroute');
 const app = express();
@@ -9,8 +10,8 @@ app.set('view engine', 'ejs');
 app.use('/', blogroute);
 app.use('/blog', blogroute);
 
+const port = process.env.PORT || 4001;
 
-
-app.listen(5000, ()=>{
-    console.log("server is running @5000");
+app.listen(port, ()=>{
+    console.log(`server is running at https://localhost:${port}/blog`);
 })
