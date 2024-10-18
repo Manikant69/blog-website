@@ -17,7 +17,6 @@ app.use(express.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
 
 app.use('/', blogroute);
-app.use('/blog', blogroute);
 
 const port = process.env.PORT || 4001;
 
