@@ -15,12 +15,16 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
 
-app.use('/', blogroute);
+// app.use('/', blogroute);
 
-app.use((err, req, res, next) => {
-    console.error('Error occurred:', err);
-    res.status(500).send('Internal Server Error');
-  });  
+// app.use((err, req, res, next) => {
+//     console.error('Error occurred:', err);
+//     res.status(500).send('Internal Server Error');
+//   });  
+
+app.get('/', (req, res)=>{
+    res.send("server is running");
+})
 
 const port = process.env.PORT || 4001;
 
