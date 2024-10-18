@@ -22,5 +22,5 @@ app.use('/blog', blogroute);
 const port = process.env.PORT || 4001;
 
 app.listen(port, ()=>{
-    console.log(`server is running at https://localhost:${port}/blog`);
+    console.log(`server is running at http://localhost:${port}/blog`);
 })
