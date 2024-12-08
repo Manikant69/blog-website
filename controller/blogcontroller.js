@@ -15,15 +15,7 @@ exports.bloghome = (req, res)=>{
 }
 
 exports.blogabout = (req, res)=>{
-    let quote;
-    axios.get("https://type.fit/api/quotes").then(resp=>{
-        let val = Math.trunc(Math.random()*resp.data.length);
-        quote = resp.data[val].text;
-        res.render('about', {pagetitle:'About', quote});
-     }).catch(err=>{
-        console.log("Error happened", err);
-        res.render('about', {pagetitle:'About', quote});
-    })
+    res.render('about', {pagetitle:'About'});
 }
 
 exports.blogcontact = (req, res)=>{
