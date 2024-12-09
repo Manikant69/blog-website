@@ -5,12 +5,12 @@ const axios = require('axios');
 let allposts = [];
 let blogData = "";
 exports.bloghome = (req, res)=>{
-    if(fs.existsSync('blogs.txt'))
-    {
-        blogData = fs.readFileSync('blogs.txt', 'utf-8');
-        const blogObject = JSON.parse(blogData);
-        allposts = blogObject;
-    }
+    // if(fs.existsSync('blogs.txt'))
+    // {
+    //     blogData = fs.readFileSync('blogs.txt', 'utf-8');
+    //     const blogObject = JSON.parse(blogData);
+    //     allposts = blogObject;
+    // }
     res.render('home', {pagetitle:'My Blog', allposts});
 }
 
@@ -39,14 +39,14 @@ exports.blogcomposePOST = (req, res)=>{
 
     let date = today.toLocaleDateString('en-IN', args);
 
-    allposts.unshift({title, date, text});
+    // allposts.unshift({title, date, text});
 
-    const posts_str = JSON.stringify(allposts);
-    fs.writeFile('blogs.txt', posts_str, (err)=>{
-        if(err){
-            console.log("Error in writing file", err);
-        }
-    })
+    // const posts_str = JSON.stringify(allposts);
+    // fs.writeFile('blogs.txt', posts_str, (err)=>{
+    //     if(err){
+    //         console.log("Error in writing file", err);
+    //     }
+    // })
 
     res.render('home', {pagetitle:"Home", allposts});
 }
@@ -56,14 +56,14 @@ exports.blogpost = (req, res)=>{
     const {q} = req.query;
     let flag = 0;
 
-    for(let post of  allposts)
-    {
-        if(lodash.lowerCase(q) === lodash.lowerCase(post.title)){
-            res.render('post', {pagetitle:'blog', post});
-            flag = 1;
-            break;
-        }
-    }
+    // for(let post of  allposts)
+    // {
+    //     if(lodash.lowerCase(q) === lodash.lowerCase(post.title)){
+    //         res.render('post', {pagetitle:'blog', post});
+    //         flag = 1;
+    //         break;
+    //     }
+    // }
 
 
     if(!flag){
