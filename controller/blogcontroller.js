@@ -29,7 +29,7 @@ exports.blogcompose = (req, res)=>{
 
 exports.blogcomposePOST = (req, res)=>{
     let title = req.body.posttitle;
-    let text = req.body.posttext;
+    let content = req.body.posttext;
     let today = new Date();
     let args = {
         weekday : "long",
@@ -38,17 +38,9 @@ exports.blogcomposePOST = (req, res)=>{
         year:"numeric",
     }
 
-    let date = today.toLocaleDateString('en-IN', args);
+    let date_published = today.toLocaleDateString('en-IN', args);
 
-    // allposts.unshift({title, date, text});
-
-    // const posts_str = JSON.stringify(allposts);
-    // fs.writeFile('blogs.txt', posts_str, (err)=>{
-    //     if(err){
-    //         console.log("Error in writing file", err);
-    //     }
-    // })
-
+    allposts.unshift({title, date_published, content});
     res.render('home', {pagetitle:"Home", allposts});
 }
 
