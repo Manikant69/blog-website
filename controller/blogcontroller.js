@@ -1,16 +1,17 @@
 const lodash = require('lodash');
-const fs = require('fs');
 const axios = require('axios');
 
 let allposts = [];
-let blogData = "";
-exports.bloghome = (req, res)=>{
-    // if(fs.existsSync('blogs.txt'))
-    // {
-    //     blogData = fs.readFileSync('blogs.txt', 'utf-8');
-    //     const blogObject = JSON.parse(blogData);
-    //     allposts = blogObject;
-    // }
+exports.bloghome = async(req, res)=>{
+    
+    try{
+        const resData = await axios.get("https://dummyapi.online/api/blogposts");
+        allposts = resData.data;
+    }
+    catch{
+        console.log(err);
+    }
+
     res.render('home', {pagetitle:'My Blog', allposts});
 }
 
@@ -56,14 +57,14 @@ exports.blogpost = (req, res)=>{
     const {q} = req.query;
     let flag = 0;
 
-    // for(let post of  allposts)
-    // {
-    //     if(lodash.lowerCase(q) === lodash.lowerCase(post.title)){
-    //         res.render('post', {pagetitle:'blog', post});
-    //         flag = 1;
-    //         break;
-    //     }
-    // }
+    for(let post of  allposts)
+    {
+        if(lodash.lowerCase(q) === lodash.lowerCase(post.title)){
+            res.render('post', {pagetitle:'blog', post});
+            flag = 1;
+            break;
+        }
+    }
 
 
     if(!flag){
