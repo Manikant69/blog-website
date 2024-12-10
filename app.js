@@ -17,11 +17,6 @@ app.set('view engine', 'ejs');
 
 app.use('/', blogroute);
 
-// app.use((err, req, res, next) => {
-//     console.error('Error occurred:', err);
-//     res.status(500).send('Internal Server Error');
-//   });  
-
 
 const port = process.env.PORT || 4001;
 
